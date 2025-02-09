@@ -1,8 +1,19 @@
 const http = require("http");
 
 const server = http.createServer((req, res) => {
-  res.write("Hello World");
-  res.end();
+  if (req.url === "/") {
+    res.statusCode = 200;
+    res.write("Hello World");
+    res.end();
+  } else if (req.url === "/about") {
+    res.statusCode = 200;
+    res.write("this is about page");
+    res.end();
+  } else if (req.url === "/contact") {
+    res.statusCode = 200;
+    res.write("this is contact page");
+    res.end();
+  }
 });
 
 server.listen(5000, () => {
