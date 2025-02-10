@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
 
   // work with write file
 
-  if (req.url === "/") {
+  /* if (req.url === "/") {
     fs.writeFile("test.txt", "I will be win", function (error) {
       if (error) {
         res.writeHead(200, { "content-type": "text/html" });
@@ -26,6 +26,21 @@ const server = http.createServer((req, res) => {
       } else {
         res.writeHead(200, { "content-type": "text/html" });
         res.write("This is home page");
+        res.end();
+      }
+    });
+  } */
+
+  // Rename File
+  if (req.url === "/") {
+    fs.rename("test.txt", "test2.txt", function (error) {
+      if (error) {
+        res.writeHead(200, { "content-type": "text/html" });
+        res.write("Failed");
+        res.end();
+      } else {
+        res.writeHead(200, { "content-type": "text/html" });
+        res.write("File rename successfull");
         res.end();
       }
     });
