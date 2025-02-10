@@ -47,7 +47,7 @@ const server = http.createServer((req, res) => {
   } */
 
   // Delete File
-  if (req.url === "/") {
+  /* if (req.url === "/") {
     fs.unlink("test.txt", function (error) {
       if (error) {
         res.writeHead(200, { "content-type": "text/html" });
@@ -56,6 +56,21 @@ const server = http.createServer((req, res) => {
       } else {
         res.writeHead(200, { "content-type": "text/html" });
         res.write("Delete file successfull");
+        res.end();
+      }
+    });
+  } */
+
+  // Check file exist or not
+  if (req.url === "/") {
+    fs.exists("test2.txt", function (error) {
+      if (error) {
+        res.writeHead(200, { "content-type": "text/html" });
+        res.write("Have");
+        res.end();
+      } else {
+        res.writeHead(200, { "content-type": "text/html" });
+        res.write("Haven't");
         res.end();
       }
     });
