@@ -4,6 +4,7 @@ const databaseConnectionConfig = {
   host: "localhost",
   user: "root",
   password: "",
+  database: "school",
 };
 
 const con = mysql.createConnection(databaseConnectionConfig);
