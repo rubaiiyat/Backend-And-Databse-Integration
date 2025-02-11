@@ -14,19 +14,32 @@ con.connect(function (error) {
     console.log("Localhost is not connected with node");
   } else {
     console.log("Localhost is successfully connected");
-    InsertData(con);
+    // InsertData(con);
+    deleteDataById(con);
   }
 });
 
 function InsertData(con) {
   const sqlQuery =
-    "INSERT INTO `studentlist`(`ID`, `name`, `address`, `dept`, `batch`) VALUES ('43','Abir Rubaiyat','Bogura','CSE','17th(Diploma)')";
+    "INSERT INTO `studentlist`(`ID`, `name`, `address`, `dept`, `batch`) VALUES ('48','Tania Rahman','Sylhet','MBA','15th(Private)'  )";
 
   con.query(sqlQuery, function (error) {
     if (error) {
       console.log("Data is not inserted");
     } else {
       console.log("Data is inserted Successfully");
+    }
+  });
+}
+
+function deleteDataById(con) {
+  const sqlQuery = "DELETE FROM `studentlist` WHERE `ID`=47";
+
+  con.query(sqlQuery, function (error) {
+    if (error) {
+      console.log("Data is not deleted");
+    } else {
+      console.log("Data is deleted successfully");
     }
   });
 }
