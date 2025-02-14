@@ -15,7 +15,8 @@ con.connect(function (error) {
   } else {
     console.log("Localhost is successfully connected");
     // InsertData(con);
-    deleteDataById(con);
+    // deleteDataById(con);
+    updateDataById(con);
   }
 });
 
@@ -40,6 +41,18 @@ function deleteDataById(con) {
       console.log("Data is not deleted");
     } else {
       console.log("Data is deleted successfully");
+    }
+  });
+}
+
+function updateDataById(con) {
+  const sqlQuery = "UPDATE `studentlist` SET `address`='Bogura' WHERE `ID`=44";
+
+  con.query(sqlQuery, function (error) {
+    if (error) {
+      console.log("Data is not updating");
+    } else {
+      console.log("Data is updating");
     }
   });
 }
