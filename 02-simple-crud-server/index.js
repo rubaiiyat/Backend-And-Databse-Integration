@@ -1,3 +1,4 @@
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -6,7 +7,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
   "mongodb+srv://abir:abir123@cluster0.cwr6j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -38,6 +38,15 @@ async function run() {
       console.log("This is our user: ", user);
 
       const result = await userCollection.insertOne(user);
+      res.send(result);
+    });
+
+    app.delete("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      console.log("Please delete id: ", id);
+
+      const query = { _id: new ObjectId(id) };
+      const result = await userCollection.deleteOne(query);
       res.send(result);
     });
 
